@@ -1,42 +1,36 @@
 package main
 
-import (
-	"fmt"
-	"strconv"
-	"strings"
-)
-
-const data = `
-1 2
-3 4
-10 20
-`
+import "fmt"
 
 func main() {
-	lines := strings.Split(strings.TrimSpace(data), "\n")
-
-	// map: parse sums
-	sums := make([]int, 0, len(lines))
-	for _, l := range lines {
-		p := strings.Fields(l)
-		a, _ := strconv.Atoi(p[0])
-		b, _ := strconv.Atoi(p[1])
-		sums = append(sums, a+b)
+	m := map[int]bool{
+		1: false,
+		2: true,
 	}
 
-	// filter: keep > 5
-	filtered := make([]int, 0, len(sums))
-	for _, v := range sums {
-		if v > 5 {
-			filtered = append(filtered, v)
-		}
+	if !m[0] {
+		fmt.Println("0")
 	}
-
-	// reduce: sum them
-	total := 0
-	for _, v := range filtered {
-		total += v
+	if !m[1] {
+		fmt.Println("1")
 	}
+	if !m[2] {
+		fmt.Println("2")
+	}
+	foo(m[0])
 
-	fmt.Println(total)
+	m2 := map[int]*string{}
+	a := "a"
+	m2[1] = &a
+
+	if m2[0] == nil {
+		fmt.Println("0s")
+	}
+	if m2[1] == &a {
+		fmt.Println("1s")
+	}
+}
+
+func foo(b bool) {
+	fmt.Printf("%v %v\n", "foo", b)
 }

@@ -6,3 +6,11 @@ func Max(a int64, b int64) int64 {
 	}
 	return b
 }
+
+func Sum(m map[int]int) int {
+	sum := 0
+	for _, v := range m {
+		sum += v
+	}
+	return sum
+}
